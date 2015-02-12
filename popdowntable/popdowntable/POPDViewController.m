@@ -27,6 +27,7 @@ static NSString *ksubSection = @"menuSubSection";
 @interface POPDViewController ()
 @property NSArray *sections;
 @property (strong, nonatomic) NSMutableArray *sectionsArray;
+@property (strong, nonatomic) NSMutableArray *itemsArray;
 @property (strong, nonatomic) NSMutableArray *showingArray;
 @end
 
@@ -54,6 +55,7 @@ static NSString *ksubSection = @"menuSubSection";
 
     self.sectionsArray = [NSMutableArray new];
     self.showingArray = [NSMutableArray new];
+    self.itemsArray = [NSMutableArray new];
     [self setMenuSections:self.sections];
     
 }
@@ -73,6 +75,9 @@ static NSString *ksubSection = @"menuSubSection";
 //        }
         [self.sectionsArray addObject:section];
         [self.showingArray addObject:[NSNumber numberWithBool:NO]];
+        
+        [self.itemsArray addObject:header];
+        [self.itemsArray addObject:subSection];
     }
     
     [self.tableView reloadData];
@@ -120,17 +125,15 @@ static NSString *ksubSection = @"menuSubSection";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    NSString *text = [self.sectionsArray objectAtIndex:[indexPath row]];
+    NSString *text = [self.itemsArray objectAtIndex:[indexPath row]];
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     
-    NSAttributedString *attributedText =
-    [[NSAttributedString alloc]
-     initWithString:text
-     attributes:@
-     {
-     NSFontAttributeName:[UIFont systemFontOfSize:FONT_SIZE]
-     }];
+    
+    NSDictionary *attrsDic = @{NSFontAttributeName: [UIFont systemFontOfSize:FONT_SIZE]};
+    
+    NSAttributedString *attributedText =[[NSAttributedString alloc]initWithString:text attributes:attrsDic];
+    
     CGRect rect = [attributedText boundingRectWithSize:constraint
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                                context:nil];
@@ -169,7 +172,7 @@ static NSString *ksubSection = @"menuSubSection";
         [[cell contentView] addSubview:label];
         
     }
-    NSString *text = [self.sectionsArray objectAtIndex:[indexPath row]];
+    NSString *text = [self.itemsArray objectAtIndex:[indexPath row]];
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     
@@ -190,15 +193,16 @@ static NSString *ksubSection = @"menuSubSection";
     
     //********* E N D ********
     
-    POPDCell *cell = nil;
+//    POPDCell *cell = nil;
 //    cell = (POPDCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 //    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"POPDCell" owner:self options:nil];
     
-    if (cell == nil) {
-        cell = [topLevelObjects objectAtIndex:0];
-    }
-    
-    cell.labelText.text = [[self.sectionsArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//    if (cell == nil) {
+//        cell = [topLevelObjects objectAtIndex:0];
+//    }
+    NSLog(@"indexpath.section: %ld, row: %li", (long)indexPath.section, (long)indexPath.row);
+    //todo: 这里会错
+    cell.labelText.text = [[self.itemsArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 //    cell.labelText.textColor = TEXT;
 //    cell.separator.backgroundColor = SEPARATOR;
 //    cell.sepShadow.backgroundColor = SEPSHADOW;

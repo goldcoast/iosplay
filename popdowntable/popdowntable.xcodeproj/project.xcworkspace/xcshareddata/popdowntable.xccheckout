@@ -12,22 +12,34 @@
 	<dict>
 		<key>4E7E39BABD1F73E823B99CE56C1BC80C3AE47A63</key>
 		<string>github.com:adimango/POPDownMenuTable.git</string>
+		<key>7DDB983297E853CD72E3675D1ECE5C26F8C1364D</key>
+		<string>github.com:goldcoast/iosplay.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>popdowntable/popdowntable.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4E7E39BABD1F73E823B99CE56C1BC80C3AE47A63</key>
+		<string>../../../../POPDownMenuTable</string>
+		<key>7DDB983297E853CD72E3675D1ECE5C26F8C1364D</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:adimango/POPDownMenuTable.git</string>
+	<string>github.com:goldcoast/iosplay.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4E7E39BABD1F73E823B99CE56C1BC80C3AE47A63</string>
+	<string>7DDB983297E853CD72E3675D1ECE5C26F8C1364D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7DDB983297E853CD72E3675D1ECE5C26F8C1364D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iosplay</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
