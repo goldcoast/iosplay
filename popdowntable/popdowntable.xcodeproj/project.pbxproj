@@ -28,6 +28,7 @@
 		2CFAD55517E5D42000980C70 /* popdowntableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAD55417E5D42000980C70 /* popdowntableTests.m */; };
 		2CFAD56017E5D63900980C70 /* POPDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAD55F17E5D63900980C70 /* POPDViewController.m */; };
 		2CFAD56117E5D63900980C70 /* POPDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFAD55F17E5D63900980C70 /* POPDViewController.m */; };
+		BA99F0621A8DF71D00D7652E /* securityInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA99F0611A8DF71D00D7652E /* securityInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		2CFAD55417E5D42000980C70 /* popdowntableTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = popdowntableTests.m; sourceTree = "<group>"; };
 		2CFAD55E17E5D63900980C70 /* POPDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POPDViewController.h; sourceTree = "<group>"; };
 		2CFAD55F17E5D63900980C70 /* POPDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POPDViewController.m; sourceTree = "<group>"; };
+		BA99F0611A8DF71D00D7652E /* securityInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = securityInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				2CFAD55F17E5D63900980C70 /* POPDViewController.m */,
 				2CA6E0D817E61FE60041CFDE /* POPDSampleViewController.h */,
 				2CA6E0D917E61FE70041CFDE /* POPDSampleViewController.m */,
+				BA99F0611A8DF71D00D7652E /* securityInfo.plist */,
 			);
 			path = popdowntable;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				2CFAD53117E5D41F00980C70 /* InfoPlist.strings in Resources */,
 				2CA6E0D017E5EA2D0041CFDE /* Main_iPhone.storyboard in Resources */,
 				2CA6E0D617E5EF7E0041CFDE /* POPDCell.xib in Resources */,
+				BA99F0621A8DF71D00D7652E /* securityInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

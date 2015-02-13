@@ -7,14 +7,7 @@
 //
 
 #import "POPDViewController.h"
-#import "POPDCell.h"
 
-#define TABLECOLOR [UIColor colorWithRed:62.0/255.0 green:76.0/255.0 blue:87.0/255.0 alpha:1.0]
-#define CELLSELECTED [UIColor colorWithRed:52.0/255.0 green:64.0/255.0 blue:73.0/255.0 alpha:1.0]
-#define SEPARATOR [UIColor colorWithRed:31.0/255.0 green:38.0/255.0 blue:43.0/255.0 alpha:1.0]
-#define SEPSHADOW [UIColor colorWithRed:80.0/255.0 green:97.0/255.0 blue:110.0/255.0 alpha:1.0]
-#define SHADOW [UIColor colorWithRed:69.0/255.0 green:84.0/255.0 blue:95.0/255.0 alpha:1.0]
-#define TEXT [UIColor colorWithRed:223.0/255.0 green:223.0/255.0 blue:213.0/255.0 alpha:1.0]
 
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
@@ -27,7 +20,6 @@ static NSString *ksubSection = @"menuSubSection";
 @interface POPDViewController ()
 @property NSArray *sections;
 @property (strong, nonatomic) NSMutableArray *sectionsArray;
-@property (strong, nonatomic) NSMutableArray *itemsArray;
 @property (strong, nonatomic) NSMutableArray *showingArray;
 @end
 
@@ -48,14 +40,10 @@ static NSString *ksubSection = @"menuSubSection";
 {
     [super viewDidLoad];
     
-//    self.tableView.backgroundColor = TABLECOLOR;
-//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
     self.tableView.frame = self.view.frame;
 
     self.sectionsArray = [NSMutableArray new];
     self.showingArray = [NSMutableArray new];
-    self.itemsArray = [NSMutableArray new];
     [self setMenuSections:self.sections];
     
 }
@@ -75,9 +63,6 @@ static NSString *ksubSection = @"menuSubSection";
 //        }
         [self.sectionsArray addObject:section];
         [self.showingArray addObject:[NSNumber numberWithBool:NO]];
-        
-        [self.itemsArray addObject:header];
-        [self.itemsArray addObject:subSection];
     }
     
     [self.tableView reloadData];
@@ -105,30 +90,27 @@ static NSString *ksubSection = @"menuSubSection";
         return 1;
     }
     else{
-        return [[self.sectionsArray objectAtIndex:section]count];;
+        return [[self.sectionsArray objectAtIndex:section]count];
     }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     if(indexPath.row ==0){
+        
         if([[self.showingArray objectAtIndex:indexPath.section]boolValue]){
-            [cell setBackgroundColor:CELLSELECTED];
+
         }else{
             [cell setBackgroundColor:[UIColor clearColor]];
-//            cell.textLabel.font = [UIFont systemFontOfSize:12.0];
-//            cell.textLabel.adjustsFontSizeToFitWidth = YES;
-//            cell.textLabel.numberOfLines = 1;
         }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    NSString *text = [self.itemsArray objectAtIndex:[indexPath row]];
-    
+    NSString *text = [[self.sectionsArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    
     
     NSDictionary *attrsDic = @{NSFontAttributeName: [UIFont systemFontOfSize:FONT_SIZE]};
     
@@ -139,8 +121,7 @@ static NSString *ksubSection = @"menuSubSection";
                                                context:nil];
     CGSize size = rect.size;
     
-    
-    CGFloat height = MAX(size.height, 44.0f);
+    CGFloat height = MAX(size.height, 25.0f);
     
     return height + (CELL_CONTENT_MARGIN * 2);
 }
@@ -148,13 +129,10 @@ static NSString *ksubSection = @"menuSubSection";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString *cellIdentifier = @"menuCell";
-    #warning : Use here your custom cell, instead of POPDCell
-    
-    //********* BEGIN ********
-    POPDCell *cell;
+
+    UITableViewCell *cell = nil;
     UILabel *label = nil;
-    
+
     cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil)
     {
@@ -167,18 +145,17 @@ static NSString *ksubSection = @"menuSubSection";
         [label setFont:[UIFont systemFontOfSize:FONT_SIZE]];
         [label setTag:1];
         
-        [[label layer] setBorderWidth:2.0f];
-        
+     
         [[cell contentView] addSubview:label];
         
     }
-    NSString *text = [self.itemsArray objectAtIndex:[indexPath row]];
+    
+    NSString *text = [[self.sectionsArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     
-    NSAttributedString *attributedText = [[NSAttributedString alloc]initWithString:text attributes:@{
-                                                                                                     NSFontAttributeName:[UIFont systemFontOfSize:FONT_SIZE]
-                                                                                                     }];
+    NSDictionary *attrsDic = @{NSFontAttributeName: [UIFont systemFontOfSize:FONT_SIZE]};
+    NSAttributedString *attributedText = [[NSAttributedString alloc]initWithString:text attributes:attrsDic];
     CGRect rect = [attributedText boundingRectWithSize:constraint
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                                context:nil];
@@ -188,25 +165,7 @@ static NSString *ksubSection = @"menuSubSection";
         label = (UILabel*)[cell viewWithTag:1];
     
     [label setText:text];
-    [label setFrame:CGRectMake(CELL_CONTENT_MARGIN, CELL_CONTENT_MARGIN, CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), MAX(size.height, 44.0f))];
-    
-    
-    //********* E N D ********
-    
-//    POPDCell *cell = nil;
-//    cell = (POPDCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"POPDCell" owner:self options:nil];
-    
-//    if (cell == nil) {
-//        cell = [topLevelObjects objectAtIndex:0];
-//    }
-    NSLog(@"indexpath.section: %ld, row: %li", (long)indexPath.section, (long)indexPath.row);
-    //todo: 这里会错
-    cell.labelText.text = [[self.itemsArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-//    cell.labelText.textColor = TEXT;
-//    cell.separator.backgroundColor = SEPARATOR;
-//    cell.sepShadow.backgroundColor = SEPSHADOW;
-//    cell.shadow.backgroundColor = SHADOW;
+    [label setFrame:CGRectMake(CELL_CONTENT_MARGIN, CELL_CONTENT_MARGIN, CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), MAX(size.height, 25.0f))];
 
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;

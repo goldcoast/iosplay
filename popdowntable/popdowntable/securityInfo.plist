@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>menuSectionHeader</key>
+		<string>专业保障</string>
+		<key>menuSubSection</key>
+		<string>我来贷严格遵守国家相关法律法规，对用户的隐私信息进行严格地保护。我来贷的IT团队来自甲骨文、腾讯、百度等知名互联网企业及国内各大银行，并有来自中国大陆，香港及印度的各地精英，在信息安全及数据安全的保护方面有着非常丰富的经验，能有效防止入侵及备份数据，确保交易数据安全。</string>
+	</dict>
+	<dict>
+		<key>menuSectionHeader</key>
+		<string>安全保障</string>
+		<key>menuSubSection</key>
+		<string>我来贷承诺在任何情况下也绝不会出售、出租或以任何其他形式泄漏我来贷用户的信息.同时我来贷用户的所有隐私信息及数据都会经过Message Digest Algorithm加密处理，用以提供信息的完整性保护，从而防止任何人获取或盗取用户信息。</string>
+	</dict>
+	<dict>
+		<key>menuSectionHeader</key>
+		<string>法律保障</string>
+		<key>menuSubSection</key>
+		<string>我来贷的每一份合同，都加盖中国金融认证中心(CFCA)权威电子印章，得到“国家级”的全面认证，其认证后的电子印章无法被篡改、伪造，有效保证投资人和借款人的合法权益。</string>
+	</dict>
+	<dict>
+		<key>menuSectionHeader</key>
+		<string>资金保障</string>
+		<key>menuSubSection</key>
+		<string>我来贷与获得中国人民银行“互联网支付”业务牌照的易联支付公司达成合作。通过易联跨行交易清算系统，我来贷实现了商业银行系统间的互联互通和资源共享，保证银行卡跨行、跨地区和跨境结算。投资人资金通过易联直接进入借款人账户， 我来贷不接触投资人与借款人的资金，确保投资人和借款人的资金安全。</string>
+	</dict>
+</array>
+</plist>
